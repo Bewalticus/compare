@@ -9,7 +9,7 @@ routerAdd("GET", "/api/goodbye/:name", (c) => {
 
 routerAdd(
   "GET",
-  "/api/hello",
+  "/api/hellojs",
   (c) => {
     let user = c.get("authRecord");
     return c.json(200, { message: "Hello " + user.get("name") });
