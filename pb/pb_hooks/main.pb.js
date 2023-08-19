@@ -7,11 +7,20 @@ routerAdd("GET", "/api/goodbye/:name", (c) => {
   return c.json(200, { message: "Goodbye Mr. " + name });
 });
 
-routerAdd("GET", "/api/hello", (c) => {
-  let user = c.get("authRecord");
-  return c.json(200, { message: "Hello " + user.get("name") });
-}, $apis.requireRecordAuth("users"));
+routerAdd(
+  "GET",
+  "/api/hello",
+  (c) => {
+    let user = c.get("authRecord");
+    return c.json(200, { message: "Hello " + user.get("name") });
+  },
+  $apis.requireRecordAuth("users")
+);
 
+routerAdd("GET", "/api/hello/:name", (c) => {
+  let user = c.pathParam("name");
+  return c.json(200, { message: "Hello " + user });
+});
 // sends email to the logged in user
 routerAdd(
   "POST",
